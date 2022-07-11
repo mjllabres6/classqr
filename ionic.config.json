@@ -1,0 +1,7 @@
+{
+  "name": "classqr",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

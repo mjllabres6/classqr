@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Classes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list class="px-5" *ngIf="!showQR">
+    <ion-item>
+      <ion-select [(ngModel)]="selectedSubject" (ngModelChange)="selected()" interface="action-sheet" placeholder="Select subject">
+        <ion-select-option [value]="subject.name" *ngFor="let subject of subjects">{{subject.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-button *ngIf="showGet" class="px-5" expand="block" (click) ="getQR()">GET CLASS QR</ion-button>
+
+  <ion-col sm>
+    <div *ngIf="showQR && !classEnded"><ion-img  [src]="imageSource" class="px-5"></ion-img></div>
+  </ion-col>
+
+  <div id="container px-5" *ngIf="showQR && !classEnded">
+    <ion-button color="danger" class="px-5" expand="block" (click) ="endClass()">END CLASS</ion-button>
+  </div>
+
+  <div id="container px-5" *ngIf="classEnded">
+    <ion-button color="success" class="px-5" expand="block">EXPORT</ion-button>
+  </div>
+  
+  <ion-card  *ngIf="showQR;">
+    <ion-card-header>
+      <ion-card-subtitle>STUDENTS IN ATTENDANCE: 0
+      </ion-card-subtitle>
+      <ion-card-title>{{selectedSubject}} <ion-icon [name]="statusIcon" [color]="status"></ion-icon></ion-card-title>
+      <ion-card-subtitle>July 8, 2022</ion-card-subtitle>
+    
+    </ion-card-header>
+
+  </ion-card>
+
+</ion-content>
