@@ -1,0 +1,16 @@
+<ion-content>
+<ion-grid>
+  <ion-row class="text-center">
+    <ion-col>
+      <ion-button (click) ="scan()" *ngIf="!showScan">SCAN CLASS QR</ion-button>
+      <ion-card>
+        <video #video [hidden]="!showScan" height="280vh" width="100%"></video>
+        <canvas #canvas hidden></canvas>
+      </ion-card>
+      <ion-button color="danger" (click) ="stopScan()" *ngIf="showScan">CANCEL</ion-button>
+    </ion-col>
+   
+  </ion-row>
+</ion-grid>
+
+</ion-content>

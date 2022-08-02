@@ -6,28 +6,40 @@
 </ion-header>
 
 <ion-content>
-  <div class ="flex-center">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title color="dark">Login</ion-card-title>
-      </ion-card-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="px-3 arimo">
+
+        <ion-item>
+          <ion-label class="arimo" position="stacked">SR Code / Prof Code</ion-label>
+          <ion-input  type="text" maxlength="8" class="arimo" [(ngModel)]="srCode"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input  type="text" type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+        <br>
+        <ion-row>
+          <ion-col>
+            <ion-button class="arimo" (click) ="login()" [disabled]="!srCode || !password" expand="block">Login as Student</ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button class="arimo" (click) ="loginAsProf()" [disabled]="!srCode || !password" expand="block">Login as Prof</ion-button>
+          </ion-col>
+        </ion-row>
+        
+
+        <ion-row class="px-5">
+          <ion-col class="text-center">
+            <ion-button class="arimo" fill="clear" size="small">Forgot Username or Password</ion-button>
+          </ion-col>
+        </ion-row>
+        
+        <ion-button class="arimo" color="medium" size = "full" fill="clear" (click)="toRegister()">Switch to Register</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
     
-      <ion-card-content>
-        <ion-item>
-          <ion-label position="floating">Username/SR Code</ion-label>
-          <ion-input type="email"></ion-input>
-        </ion-item>
-        <br>
-        <ion-item>
-          <ion-label position="floating">Password</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
-        <br>
-        <ion-button expand="block" size = "full">Login</ion-button>
-        <ion-button fill="clear" size="full">Forgot Username or Password</ion-button>
-        <ion-button routerLink="./register" size = "full" href="register">Register</ion-button>
-      </ion-card-content>
-    </ion-card>
-   </div>
 </ion-content>
 

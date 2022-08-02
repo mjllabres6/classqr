@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { ScanPageRoutingModule } from './scan-routing.module';
 
-import { LoginPage } from './login.page';
+import { ScanPage } from './scan.page';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -14,9 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule,
-    HttpClientModule
+    ScanPageRoutingModule,
+    HttpClientModule,
   ],
-  declarations: [LoginPage]
+  declarations: [ScanPage],
 })
-export class LoginPageModule {}
+export class ScanPageModule {}

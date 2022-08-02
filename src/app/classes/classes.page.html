@@ -8,11 +8,30 @@
 
   <ion-list class="px-5" *ngIf="!showQR">
     <ion-item>
-      <ion-select [(ngModel)]="selectedSubject" (ngModelChange)="selected()" interface="action-sheet" placeholder="Select subject">
+      <ion-select [(ngModel)]="selectedSubject" (ngModelChange)="selected()" interface="action-sheet" placeholder="Select Subject">
         <ion-select-option [value]="subject.name" *ngFor="let subject of subjects">{{subject.name}}</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
+
+  <ion-row *ngIf="!addActive && !classEnded && !showQR">
+    <ion-col class="px-5">
+      <ion-button class="px-5" expand="block" (click) ="toggleAdd()" color="danger">ADD SUBJECT</ion-button>
+    </ion-col>
+    <ion-col class="px-5">
+      <ion-button class="px-5" expand="block" (click) ="setSubjects()">REFRESH SUBJECTS</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="addActive && !classEnded">
+    <ion-col class="px-5">
+      <ion-item>
+        <ion-label class="arimo" position="stacked">Subject Name</ion-label>
+        <ion-input  type="text" maxlength="20" class="arimo" [(ngModel)]="newSubjectName"></ion-input>
+      </ion-item>
+      <ion-button class="px-5" expand="block" (click) ="addSubject()" [disabled]="!newSubjectName">ADD SUBJECT</ion-button>
+    </ion-col>
+  </ion-row>
 
   <ion-button *ngIf="showGet" class="px-5" expand="block" (click) ="getQR()">GET CLASS QR</ion-button>
 
@@ -25,18 +44,24 @@
   </div>
 
   <div id="container px-5" *ngIf="classEnded">
-    <ion-button color="success" class="px-5" expand="block">EXPORT</ion-button>
+    <ion-button [href]="exportLink" color="success" class="px-5" expand="block">EXPORT</ion-button>
   </div>
   
-  <ion-card  *ngIf="showQR;">
+  <ion-card  *ngIf="showQR">
     <ion-card-header>
-      <ion-card-subtitle>STUDENTS IN ATTENDANCE: 0
+      <ion-card-subtitle>STUDENTS IN ATTENDANCE: {{ studentCount }}
       </ion-card-subtitle>
       <ion-card-title>{{selectedSubject}} <ion-icon [name]="statusIcon" [color]="status"></ion-icon></ion-card-title>
-      <ion-card-subtitle>July 8, 2022</ion-card-subtitle>
+      <ion-card-subtitle>{{ dateToday }}</ion-card-subtitle>
     
     </ion-card-header>
-
   </ion-card>
+  <div id="container px-5" *ngIf="showQR && !classEnded">
+    <ion-button color="primary" class="px-5" expand="block" (click) ="getAttendanceCount()">REFRESH</ion-button>
+  </div>
+
+  <div id="container px-5" *ngIf="classEnded">
+    <ion-button color="success" class="px-5" expand="block" (click) ="reset()">CREATE NEW CLASS</ion-button>
+  </div>
 
 </ion-content>

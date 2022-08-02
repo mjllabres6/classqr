@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registration Tab</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+ <ion-grid>
+  <ion-row>
+    <ion-col class="px-3 arimo">
+      <ion-item>
+        <ion-label position="stacked" class="arimo">SR-code</ion-label>
+        <ion-input [(ngModel)]="srCode" maxlength="8" class="arimo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked" class="arimo">Full Name</ion-label>
+        <ion-input type="text" class="arimo" [(ngModel)]="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked" class="arimo">Section</ion-label>
+        <ion-input type="text" class="arimo" [(ngModel)]="section"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-label position="stacked" class="arimo">Password</ion-label>
+        <ion-input type="password" class="arimo" [(ngModel)]="password"></ion-input>
+      </ion-item>
+      
+      <br>
+      <ion-button class="arimo" expand = "block" [disabled]="!name || !srCode || !password" (click)="register()">Sign Up</ion-button>
+      <ion-button class="arimo" size = "full" fill="clear" color="medium" (click)="toLogin()">Back to Login</ion-button>
+    </ion-col>
+  </ion-row>
+ </ion-grid>
+</ion-content>

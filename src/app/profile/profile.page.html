@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>{{ srcode}} </ion-card-subtitle>
+      <ion-card-title>{{ name }} <ion-badge [color]="color">{{ type }}</ion-badge></ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <br>
+      <span *ngIf="section">
+        {{ section }}
+      </span>
+    </ion-card-content>
+  </ion-card>
+  <ion-row class="px-5 text-center">
+    <ion-col *ngIf="isStudent">
+      <b>Attendance</b>
+    </ion-col>
+    <ion-col *ngIf="!isStudent">
+      <b>Classes</b>
+    </ion-col>
+  </ion-row>
+  <ion-card *ngFor="let item of attendance">
+    <ion-card-header>
+      <ion-card-subtitle>{{ item.date }} - {{ item.prof_name }}</ion-card-subtitle>
+      <ion-card-title>{{ item.subject }}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+     Class code: {{ item.class_code }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngFor="let item of classes">
+    <ion-card-header>
+      <ion-card-subtitle>{{ item.date }}</ion-card-subtitle>
+      <ion-card-title>{{ item.subject_name }}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+     Class code: {{ item.code }}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
