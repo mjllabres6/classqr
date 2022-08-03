@@ -35,8 +35,6 @@ export class ProfilePage implements OnInit {
       this.color = "primary"
       this.getClasses();
     }
-
-    
   }
 
 
@@ -48,6 +46,10 @@ export class ProfilePage implements OnInit {
   async getClasses(){
     const res = await this.http.get<any>(`http://127.0.0.1:5000/attendance-api/classes/${this.srcode}/conducted`).toPromise();
     this.classes = res.results;
+  }
+
+  exportLink(code) {
+    return `http://127.0.0.1:5000/attendance-api/classes/${code}/export`
   }
 
 }

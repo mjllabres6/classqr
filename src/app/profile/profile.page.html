@@ -45,8 +45,9 @@
     </ion-card-header>
   
     <ion-card-content>
-     Class code: {{ item.code }}
+      <ion-button [href]="exportLink(item.code)" color="success" class="px-5" expand="block">EXPORT</ion-button>
     </ion-card-content>
+    
   </ion-card>
 
 </ion-content>
